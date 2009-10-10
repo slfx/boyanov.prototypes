@@ -24,10 +24,23 @@ table.weekdays
 	height: 100%;
 }
 
+td.weekdays-header
+{
+	padding: 0px;
+	border: 1px solid #000000;
+	vertical-align: top;
+}
+
 td.weekdays
 {
 	padding: 0px;
 	border: 1px solid #000000;
+	/*
+	border-top-color: #cccccc;
+	border-left-color: #aaaaaa;
+	border-right-color: #666666;
+	border-bottom-color: #000000;
+	*/
 	vertical-align: top;
 }
 
@@ -38,7 +51,7 @@ div.weekdays-header
 	font-weight: bold;
 	margin: 0px;
 	padding: 4px;
-	background: #cccccc;
+	background: #bbbbbb;
 	border-bottom: 1px solid #000000;
 }
 
@@ -50,7 +63,8 @@ div.weekdays-header-left
 
 td.weekdays-footer
 {
-	color: #cccccc;
+	color: #000000;
+	font-family: Verdana, Sans-Serif;
 	font-size: 6pt;
 	padding: 2px;
 	border: 1px solid #000000;
@@ -70,7 +84,7 @@ div.weekday-header
 	padding-right: 6px;
 	clear: none;
 	background: #eeeeee;
-	border-bottom: 1px solid #999999;
+	border-bottom: 1px dotted #999999;
 }
 
 div.weekday-weekday
@@ -91,7 +105,8 @@ div.weekday-date
 
 require_once "calgen-inc.php";
 
-	$date_text = "2009-09-21";
+	// $date_text = "2009-09-21";
+	$date_text = date("Y-m-d");
 	$weekdays = calgen_weekdays($date_text);
 	// print "weekdays: " . var_export($weekdays, TRUE) . "<br />";
 
@@ -114,9 +129,11 @@ function calgen_week_generate_col2($weekdays)
 	$text .= 
 		"<table class='weekdays'>" .
 			"<tr>" .
-				"<td colspan='2' class='weekdays' style='height: 20%;'>" .
+				"<td colspan='2' class='weekdays-header' style='height: 20%;'>" .
 					"<div class='weekdays-header'>" .
-						"<div class='weekdays-header-left'>[&nbsp;&nbsp;&nbsp;&nbsp;]</div>" .
+						"<div class='weekdays-header-left'>" .
+							"[Y:" . date("Y", $weekdays[0][0]) . "/W:" . date("W", $weekdays[0][0]) . "]" .
+						"</div>" .
 						"<div class='weekdays-header-right'>" .
 							date("Y-m-d", $weekdays[0][0]) . " - " . date("Y-m-d", $weekdays[6][0]) . 
 						"</div>" .
