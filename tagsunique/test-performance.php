@@ -10,7 +10,7 @@ require_once "tagsunique-inc.php";
 	// Test
 	print "-- Test tagsunique_tag_generate<br />";
 	
-	$a_max = 10;	// number of packages
+	$a_max = 5;	// number of packages
 	$b_max = 10;	// itterations per package
 	$t_max = $a_max * $b_max;
 	if ($t_max > 500) set_time_limit($t_max / 10);
