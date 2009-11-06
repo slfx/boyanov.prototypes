@@ -64,8 +64,8 @@ div.weekdays-header-left
 td.weekdays-footer
 {
 	color: #000000;
-	font-family: Verdana, Sans-Serif;
-	font-size: 6pt;
+	font-family: Arial;
+	font-size: 8pt;
 	padding: 2px;
 	border: 1px solid #000000;
 	vertical-align: bottom;
