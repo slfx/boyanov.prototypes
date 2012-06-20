@@ -7,7 +7,7 @@
 
 html,body
 {
-	font-family: Georgia;
+	font-family: Monospace;
 	font-size: 9pt;
 	margin:0;
 	padding:0;
@@ -51,7 +51,7 @@ div.weekdays-header
 	font-weight: bold;
 	margin: 0px;
 	padding: 4px;
-	background: #bbbbbb;
+	background: #333333;	/* #666666 */
 	border-bottom: 1px solid #000000;
 }
 
@@ -98,6 +98,13 @@ div.weekday-date
 	text-align: right;
 }
 
+td.week-tasks
+{
+	padding: 0px;
+	border: 1px solid #000000;
+	vertical-align: top;
+}
+
 	</style>
 </head>
 <body>
@@ -105,8 +112,8 @@ div.weekday-date
 
 require_once "calgen-inc.php";
 
-	// $date_text = "2009-09-21";
-	$date_text = date("Y-m-d");
+	// $date_text = "2011-01-15";
+	if (!$date_text) $date_text = date("Y-m-d");
 	$weekdays = calgen_weekdays($date_text);
 	// print "weekdays: " . var_export($weekdays, TRUE) . "<br />";
 
@@ -129,7 +136,7 @@ function calgen_week_generate_col2($weekdays)
 	$text .= 
 		"<table class='weekdays'>" .
 			"<tr>" .
-				"<td colspan='2' class='weekdays-header' style='height: 20%;'>" .
+				"<td colspan='2' class='weekdays-header' style='height: 14%;'>" .
 					"<div class='weekdays-header'>" .
 						"<div class='weekdays-header-left'>" .
 							"[Y:" . date("Y", $weekdays[0][0]) . "/W:" . date("W", $weekdays[0][0]) . "]" .
@@ -141,7 +148,7 @@ function calgen_week_generate_col2($weekdays)
 				"</td>" .
 			"</tr>" .
 			"<tr>" .
-				"<td class='weekdays' style='height: 25%;'>" .
+				"<td class='weekdays' style='height: 24%;'>" .
 					calgen_week_generate_col2_weekday($weekdays[0]) .
 				"</td>" .
 				"<td class='weekdays'>" .
@@ -149,7 +156,7 @@ function calgen_week_generate_col2($weekdays)
 				"</td>" .
 			"</tr>" .
 			"<tr>" .
-				"<td class='weekdays' style='height: 25%;'>" .
+				"<td class='weekdays' style='height: 24%;'>" .
 					calgen_week_generate_col2_weekday($weekdays[1]) .
 				"</td>" .
 				"<td class='weekdays'>" .
@@ -157,7 +164,7 @@ function calgen_week_generate_col2($weekdays)
 				"</td>" .
 			"</tr>" .
 			"<tr>" .
-				"<td rowspan='2' class='weekdays' style='height: 25%;'>" .
+				"<td rowspan='2' class='weekdays' style='height: 24%;'>" .
 					calgen_week_generate_col2_weekday($weekdays[2]) .
 				"</td>" .
 				"<td class='weekdays'>" .
@@ -170,9 +177,13 @@ function calgen_week_generate_col2($weekdays)
 				"</td>" .
 			"</tr>" .
 			"<tr>" .
-				"<td colspan='2' class='weekdays-footer' style='height: 5%;'>" .	// NOTE: For IE6 the total %'s should be less that 100%.
-					"" .
-					"Form: Worksheet-Weekly, by AppletWorks &trade;.Copyright &copy; 2009 by AppletWorks&trade;" .
+				"<td colspan='2' class='week-tasks' style='height: 12%;'>" .
+					"&nbsp;" .
+				"</td>" .
+			"<tr>" .
+				"<td colspan='2' class='weekdays-footer' style='height: 2%;'>" .	// NOTE: For IE6 the total %'s should be less that 100%.
+					"Form: Worksheet-Weekly, by AppletWorks&trade;. Copyright &copy; 2009-2010 by AppletWorks&trade;. " .
+					"Last modified on " . date("Y-m-d", filemtime(__FILE__)) . 
 				"</td>" .
 			"</tr>" .
 		"</table>";

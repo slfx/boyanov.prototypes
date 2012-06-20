@@ -1,0 +1,12 @@
+CHANGES
+
+
+2012-06-20 (nb)
+
+Testing scripts formatting and comments improved. Minor code/performance improvements. Added/updated copyright and other info.
+
+- Added CHANGES.txt file.
+- Changes in tagsunique project - code formatting of testing script, copyright and other info, more comments, using mt_rand (faster) instead of rand function, improved algorithm and flow a little.
+- Changes in fnvhash project - added copyright and other info to scripts, comments to clarify algorithm.
+- Changes in Calgen project: improved CSS and formatting for tasting script.
+

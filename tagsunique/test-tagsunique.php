@@ -1,10 +1,11 @@
 <?php
 print "<code>";
 
+// ----------------------------------------------------------------------------
 
-require_once "tagsunique-inc.php";
+require_once "../tagsunique/tagsunique-inc.php";
 
-
+	// ------------------------------------------------------------------------
 	
 	print "TAGSUNIQUE_TAG_CHARACTERS: " . var_export($TAGSUNIQUE_TAG_CHARACTERS, TRUE) . "<br />";
 
@@ -49,6 +50,7 @@ require_once "tagsunique-inc.php";
 	print "-- Test tagsunique_tag_generate<br />";
 
 	$counter_max = 200;
+	print "---- counter_max: {$counter_max} ----<br />";
 	if ($counter_max > 1000) set_time_limit($counter_max / 30);
 	for ($counter = 0; $counter < $counter_max; $counter++)
 	{
@@ -65,6 +67,7 @@ require_once "tagsunique-inc.php";
 		print "{$tag} ";
 	}
 
+// ----------------------------------------------------------------------------
 
 print "</code>";
 ?>

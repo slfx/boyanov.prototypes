@@ -1,10 +1,26 @@
 <?php
 
+/**
+ *	FNV Hash
+ *
+ *  Author: Neven Boyanov
+ *  Copyright (c) 2009 by Neven Boyanov (Boyanov.Org)
+ *  Licensed under GNU/GPLv2 - http://www.gnu.org/licenses/
+ *
+ *  This program is distributed under the terms of the License,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty
+ *  of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See
+ *  the License for more details.
+ *
+ **/
+
 	/*
+	*	Constants
+	*
 	*	FNV_PRIME:
-	*	32 bit FNV_prime = 224 + 28 + 0x93 = 16777619
-	*	64 bit FNV_prime = 240 + 28 + 0xb3 = 1099511628211
-	*	128 bit FNV_prime = 288 + 28 + 0x3b = 309485009821345068724781371
+	*	32 bit FNV_prime = 2^24 + 2^8 + 0x93 = 16777619	... 1000000000000000110010011
+	*	64 bit FNV_prime = 2^40 + 2^8 + 0xb3 = 1099511628211	... 10000000000000000000000000000000110110011
+	*	128 bit FNV_prime = 2^88 + 2^8 + 0x3b = 309485009821345068724781371	...
 	*	OFFSET_BASIS:
 	*	32 bit offset_basis = 2166136261
 	*	64 bit offset_basis = 14695981039346656037
@@ -33,8 +49,6 @@ define ("FNV_offset_basis_128", 144066263297769815596495629667062367629);
 	*	Source: http://www.isthe.com/chongo/tech/comp/fnv/
 	*/
 
-function fnvhash_fnv1($txt)
-{
 	/*
 	*	Example Java implementation:
 	*
@@ -50,6 +64,9 @@ function fnvhash_fnv1($txt)
 	*
 	*	`Source: http://www.getopt.org/ - FNV1 Hash
 	*/
+
+function fnvhash_fnv1($txt)
+{
 	$buf = str_split($txt);
 	$hash = FNV_offset_basis_32;
 	foreach ($buf as $chr)
